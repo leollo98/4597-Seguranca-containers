@@ -2,15 +2,11 @@ FROM ubuntu:24.10
 
 EXPOSE 8000
 
-RUN useradd -ms /bin/bash  leosa
-
-USER leosa
-
 WORKDIR /app
 
 ENV HOST=localhost DBPORT=5432
 
-ENV USER=root PASSWORD DBNAME=root
+ENV USER=root PASSWORD=root DBNAME=root
 
 COPY ./api-go-gin api-go-gin
 
