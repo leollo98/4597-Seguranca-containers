@@ -6,7 +6,7 @@ RUN useradd -ms /bin/bash  leosa
 
 USER leosa
 
-WORKDIR /app
+WORKDIR /home/leosa/app
 
 ENV HOST=localhost DBPORT=5432
 
