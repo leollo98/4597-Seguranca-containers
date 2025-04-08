@@ -2,11 +2,9 @@ FROM ubuntu:24.10
 
 EXPOSE 8000
 
-RUN useradd -ms /bin/bash  leosa
 
-USER leosa
 
-WORKDIR /home/leosa/app
+WORKDIR /app
 
 ENV HOST=localhost DBPORT=5432
 
