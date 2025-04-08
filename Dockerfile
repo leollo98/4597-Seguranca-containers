@@ -1,5 +1,5 @@
 FROM ubuntu:24.10
-
+ 
 EXPOSE 8000
 
 WORKDIR /app
