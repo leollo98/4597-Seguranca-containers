@@ -23,4 +23,15 @@ jobs:
         ignore-base: false # optional
         dockerhub-user: leonardosartorello # optional
         dockerhub-password: ${{ secrets.DOCKERHUB_PASS }}
+    - name: Aqua Security Trivy
+  # You may pin to the exact commit or the version.
+  # uses: aquasecurity/trivy-action@6c175e9c4083a92bbca2f9724c8a5e33bc2d97a5
+      uses: aquasecurity/trivy-action@0.30.0
+      with:
+    # Scan type to use for scanning vulnerability
+        image-ref: leonardosartorello/seguranca_docker:${{ github.run_number }}
+        exit-code: 1 # optional
+        severity: HIGH,CRITICAL
+        format: table # optional, default is table
+          
           
