@@ -16,4 +16,8 @@ RUN chmod +x api-go-gin
 
 COPY ./templates/ templates/
 
+RUN useradd -ms /bin/bash  leosa
+
+USER leosa
+
 CMD [ "./api-go-gin" ]
