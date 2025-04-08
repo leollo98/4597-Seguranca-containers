@@ -10,7 +10,7 @@ WORKDIR /app
 
 ENV HOST=localhost DBPORT=5432
 
-ENV USER=root PASSWORD DBNAME=root
+ENV USER=root PASSWORD=root DBNAME=root
 
 COPY ./api-go-gin api-go-gin
 
