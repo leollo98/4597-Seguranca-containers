@@ -12,4 +12,15 @@ jobs:
     - uses: actions/checkout@v4
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag leonardosartorello/seguranca_docker:${{ github.run_number }}
-
+    - name: Docker Scout
+  # You may pin to the exact commit or the version.
+  # uses: docker/scout-action@d341d36d6eebbe05c0b25760c63afa19e8f23269
+      uses: docker/scout-action@v1.17.0
+      with:
+        command: quickview
+        image: leonardosartorello/seguranca_docker:${{ github.run_number }}
+        # Ignore vulnerabilities from base image
+        ignore-base: false # optional
+        dockerhub-user: leonardosartorello # optional
+        dockerhub-password: ${{ secrets.DOCKERHUB_PASS }}
+          
