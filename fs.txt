@@ -1,0 +1,146 @@
+
+Report Summary
+
+┌────────────┬────────────┬─────────────────┬─────────┬───────────────────┐
+│   Target   │    Type    │ Vulnerabilities │ Secrets │ Misconfigurations │
+├────────────┼────────────┼─────────────────┼─────────┼───────────────────┤
+│ go.mod     │   gomod    │       21        │    -    │         -         │
+├────────────┼────────────┼─────────────────┼─────────┼───────────────────┤
+│ Dockerfile │ dockerfile │        -        │    -    │         4         │
+└────────────┴────────────┴─────────────────┴─────────┴───────────────────┘
+Legend:
+- '-': Not scanned
+- '0': Clean (no security findings detected)
+
+
+go.mod (gomod)
+==============
+Total: 21 (UNKNOWN: 0, LOW: 0, MEDIUM: 10, HIGH: 10, CRITICAL: 1)
+
+┌──────────────────────────────┬─────────────────────┬──────────┬────────┬────────────────────────────────────┬───────────────────────────────────┬──────────────────────────────────────────────────────────────┐
+│           Library            │    Vulnerability    │ Severity │ Status │         Installed Version          │           Fixed Version           │                            Title                             │
+├──────────────────────────────┼─────────────────────┼──────────┼────────┼────────────────────────────────────┼───────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ github.com/gin-gonic/gin     │ CVE-2023-26125      │ MEDIUM   │ fixed  │ v1.7.7                             │ 1.9.0                             │ golang-github-gin-gonic-gin: Improper Input Validation       │
+│                              │                     │          │        │                                    │                                   │ https://avd.aquasec.com/nvd/cve-2023-26125                   │
+│                              ├─────────────────────┤          │        │                                    ├───────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                              │ CVE-2023-29401      │          │        │                                    │ 1.9.1                             │ golang-github-gin-gonic-gin: Gin Web Framework does not      │
+│                              │                     │          │        │                                    │                                   │ properly sanitize filename parameter of                      │
+│                              │                     │          │        │                                    │                                   │ Context.FileAttachment...                                    │
+│                              │                     │          │        │                                    │                                   │ https://avd.aquasec.com/nvd/cve-2023-29401                   │
+├──────────────────────────────┼─────────────────────┼──────────┤        ├────────────────────────────────────┼───────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ github.com/jackc/pgproto3    │ GHSA-7jwh-3vrq-q3m8 │ HIGH     │        │ v1.1.0                             │ 2.3.3                             │ pgproto3 SQL Injection via Protocol Message Size Overflow    │
+│                              │                     │          │        │                                    │                                   │ https://github.com/advisories/GHSA-7jwh-3vrq-q3m8            │
+├──────────────────────────────┤                     │          │        ├────────────────────────────────────┤                                   │                                                              │
+│ github.com/jackc/pgproto3/v2 │                     │          │        │ v2.2.0                             │                                   │                                                              │
+│                              │                     │          │        │                                    │                                   │                                                              │
+├──────────────────────────────┼─────────────────────┤          │        ├────────────────────────────────────┼───────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ github.com/jackc/pgx/v4      │ CVE-2024-27289      │          │        │ v4.14.0                            │ 4.18.2                            │ pgx: SQL Injection via Line Comment Creation                 │
+│                              │                     │          │        │                                    │                                   │ https://avd.aquasec.com/nvd/cve-2024-27289                   │
+│                              ├─────────────────────┤          │        │                                    │                                   ├──────────────────────────────────────────────────────────────┤
+│                              │ CVE-2024-27304      │          │        │                                    │                                   │ pgx: SQL Injection via Protocol Message Size Overflow        │
+│                              │                     │          │        │                                    │                                   │ https://avd.aquasec.com/nvd/cve-2024-27304                   │
+├──────────────────────────────┼─────────────────────┼──────────┤        ├────────────────────────────────────┼───────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ golang.org/x/crypto          │ CVE-2024-45337      │ CRITICAL │        │ v0.0.0-20211202192323-5770296d904e │ 0.31.0                            │ golang.org/x/crypto/ssh: Misuse of                           │
+│                              │                     │          │        │                                    │                                   │ ServerConfig.PublicKeyCallback may cause authorization       │
+│                              │                     │          │        │                                    │                                   │ bypass in golang.org/x/crypto                                │
+│                              │                     │          │        │                                    │                                   │ https://avd.aquasec.com/nvd/cve-2024-45337                   │
+│                              ├─────────────────────┼──────────┤        │                                    ├───────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                              │ CVE-2022-27191      │ HIGH     │        │                                    │ 0.0.0-20220314234659-1baeb1ce4c0b │ golang: crash in a golang.org/x/crypto/ssh server            │
+│                              │                     │          │        │                                    │                                   │ https://avd.aquasec.com/nvd/cve-2022-27191                   │
+│                              ├─────────────────────┼──────────┤        │                                    ├───────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                              │ CVE-2023-48795      │ MEDIUM   │        │                                    │ 0.17.0                            │ ssh: Prefix truncation attack on Binary Packet Protocol      │
+│                              │                     │          │        │                                    │                                   │ (BPP)                                                        │
+│                              │                     │          │        │                                    │                                   │ https://avd.aquasec.com/nvd/cve-2023-48795                   │
+├──────────────────────────────┼─────────────────────┼──────────┤        ├────────────────────────────────────┼───────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ golang.org/x/net             │ CVE-2022-27664      │ HIGH     │        │ v0.0.0-20211112202133-69e39bad7dc2 │ 0.0.0-20220906165146-f3363e06e74c │ golang: net/http: handle server errors after sending GOAWAY  │
+│                              │                     │          │        │                                    │                                   │ https://avd.aquasec.com/nvd/cve-2022-27664                   │
+│                              ├─────────────────────┤          │        │                                    ├───────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                              │ CVE-2022-41723      │          │        │                                    │ 0.7.0                             │ golang.org/x/net/http2: avoid quadratic complexity in HPACK  │
+│                              │                     │          │        │                                    │                                   │ decoding                                                     │
+│                              │                     │          │        │                                    │                                   │ https://avd.aquasec.com/nvd/cve-2022-41723                   │
+│                              ├─────────────────────┤          │        │                                    ├───────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                              │ CVE-2023-39325      │          │        │                                    │ 0.17.0                            │ golang: net/http, x/net/http2: rapid stream resets can cause │
+│                              │                     │          │        │                                    │                                   │ excessive work (CVE-2023-44487)                              │
+│                              │                     │          │        │                                    │                                   │ https://avd.aquasec.com/nvd/cve-2023-39325                   │
+│                              ├─────────────────────┼──────────┤        │                                    ├───────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                              │ CVE-2022-41717      │ MEDIUM   │        │                                    │ 0.4.0                             │ golang: net/http: excessive memory growth in a Go server     │
+│                              │                     │          │        │                                    │                                   │ accepting HTTP/2 requests...                                 │
+│                              │                     │          │        │                                    │                                   │ https://avd.aquasec.com/nvd/cve-2022-41717                   │
+│                              ├─────────────────────┤          │        │                                    ├───────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                              │ CVE-2023-3978       │          │        │                                    │ 0.13.0                            │ golang.org/x/net/html: Cross site scripting                  │
+│                              │                     │          │        │                                    │                                   │ https://avd.aquasec.com/nvd/cve-2023-3978                    │
+│                              ├─────────────────────┤          │        │                                    ├───────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                              │ CVE-2023-44487      │          │        │                                    │ 0.17.0                            │ HTTP/2: Multiple HTTP/2 enabled web servers are vulnerable   │
+│                              │                     │          │        │                                    │                                   │ to a DDoS attack...                                          │
+│                              │                     │          │        │                                    │                                   │ https://avd.aquasec.com/nvd/cve-2023-44487                   │
+│                              ├─────────────────────┤          │        │                                    ├───────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                              │ CVE-2023-45288      │          │        │                                    │ 0.23.0                            │ golang: net/http, x/net/http2: unlimited number of           │
+│                              │                     │          │        │                                    │                                   │ CONTINUATION frames causes DoS                               │
+│                              │                     │          │        │                                    │                                   │ https://avd.aquasec.com/nvd/cve-2023-45288                   │
+│                              ├─────────────────────┤          │        │                                    ├───────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                              │ CVE-2025-22870      │          │        │                                    │ 0.36.0                            │ golang.org/x/net/proxy: golang.org/x/net/http/httpproxy:     │
+│                              │                     │          │        │                                    │                                   │ HTTP Proxy bypass using IPv6 Zone IDs in golang.org/x/net    │
+│                              │                     │          │        │                                    │                                   │ https://avd.aquasec.com/nvd/cve-2025-22870                   │
+├──────────────────────────────┼─────────────────────┤          │        ├────────────────────────────────────┼───────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ golang.org/x/sys             │ CVE-2022-29526      │          │        │ v0.0.0-20211205182925-97ca703d548d │ 0.0.0-20220412211240-33da011f77ad │ golang: syscall: faccessat checks wrong group                │
+│                              │                     │          │        │                                    │                                   │ https://avd.aquasec.com/nvd/cve-2022-29526                   │
+├──────────────────────────────┼─────────────────────┼──────────┤        ├────────────────────────────────────┼───────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ golang.org/x/text            │ CVE-2022-32149      │ HIGH     │        │ v0.3.7                             │ 0.3.8                             │ golang: golang.org/x/text/language: ParseAcceptLanguage      │
+│                              │                     │          │        │                                    │                                   │ takes a long time to parse complex tags                      │
+│                              │                     │          │        │                                    │                                   │ https://avd.aquasec.com/nvd/cve-2022-32149                   │
+├──────────────────────────────┼─────────────────────┼──────────┤        ├────────────────────────────────────┼───────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ google.golang.org/protobuf   │ CVE-2024-24786      │ MEDIUM   │        │ v1.27.1                            │ 1.33.0                            │ golang-protobuf: encoding/protojson, internal/encoding/json: │
+│                              │                     │          │        │                                    │                                   │ infinite loop in protojson.Unmarshal when unmarshaling       │
+│                              │                     │          │        │                                    │                                   │ certain forms of...                                          │
+│                              │                     │          │        │                                    │                                   │ https://avd.aquasec.com/nvd/cve-2024-24786                   │
+├──────────────────────────────┼─────────────────────┼──────────┤        ├────────────────────────────────────┼───────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ gopkg.in/yaml.v3             │ CVE-2022-28948      │ HIGH     │        │ v3.0.0-20210107192922-496545a6307b │ 3.0.0-20220521103104-8f96da9f5d5e │ golang-gopkg-yaml: crash when attempting to deserialize      │
+│                              │                     │          │        │                                    │                                   │ invalid input                                                │
+│                              │                     │          │        │                                    │                                   │ https://avd.aquasec.com/nvd/cve-2022-28948                   │
+└──────────────────────────────┴─────────────────────┴──────────┴────────┴────────────────────────────────────┴───────────────────────────────────┴──────────────────────────────────────────────────────────────┘
+
+Dockerfile (dockerfile)
+=======================
+Tests: 28 (SUCCESSES: 24, FAILURES: 4)
+Failures: 4 (UNKNOWN: 0, LOW: 1, MEDIUM: 1, HIGH: 1, CRITICAL: 1)
+
+AVD-DS-0001 (MEDIUM): Specify a tag in the 'FROM' statement for image 'ubuntu'
+════════════════════════════════════════
+When using a 'FROM' statement you should use a specific tag to avoid uncontrolled behavior when the image is updated.
+
+See https://avd.aquasec.com/misconfig/ds001
+────────────────────────────────────────
+ Dockerfile:1
+────────────────────────────────────────
+   1 [ FROM ubuntu:latest
+────────────────────────────────────────
+
+
+AVD-DS-0002 (HIGH): Specify at least 1 USER command in Dockerfile with non-root user as argument
+════════════════════════════════════════
+Running containers with 'root' user can lead to a container escape situation. It is a best practice to run containers as non-root users, which can be done by adding a 'USER' statement to the Dockerfile.
+
+See https://avd.aquasec.com/misconfig/ds002
+────────────────────────────────────────
+
+
+AVD-DS-0026 (LOW): Add HEALTHCHECK instruction in your Dockerfile
+════════════════════════════════════════
+You should add HEALTHCHECK instruction in your docker container images to perform the health check on running containers.
+
+See https://avd.aquasec.com/misconfig/ds026
+────────────────────────────────────────
+
+
+AVD-DS-0031 (CRITICAL): Possible exposure of secret env "PASSWORD" in ENV
+════════════════════════════════════════
+Passing secrets via `build-args` or envs or copying secret files can leak them out
+
+See https://avd.aquasec.com/misconfig/ds031
+────────────────────────────────────────
+ Dockerfile:9
+────────────────────────────────────────
+   9 [ ENV USER=root PASSWORD=root DBNAME=root
+────────────────────────────────────────
+
+
